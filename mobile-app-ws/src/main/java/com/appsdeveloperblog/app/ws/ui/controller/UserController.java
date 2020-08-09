@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.appsdeveloperblog.app.ws.ui.model.response.UserRest;
+
 @RestController
 @RequestMapping("users")
 public class UserController {
@@ -26,8 +28,9 @@ public class UserController {
 	}
 	
 	@GetMapping(path = "/{userId}")
-	public String getUserById(@PathVariable String userId) {
-		return "GET /users/" + userId + "  was called!";
+	public UserRest getUserById(@PathVariable String userId) {
+		UserRest returnValue = new UserRest(userId, "Matheus", "Mello de Lima", "mellomatheuslima@gmail.com");
+		return returnValue;
 	}
 	
 	@PutMapping(path = "/{userId}")
