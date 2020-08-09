@@ -1,13 +1,13 @@
 package com.appsdeveloperblog.app.ws.ui.model.response;
 
-public class UserRest {
+public class UserResponse {
 	
 	private String id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	
-	public UserRest(String id, String firstName, String lastName, String email) {
+	public UserResponse(String id, String firstName, String lastName, String email) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;

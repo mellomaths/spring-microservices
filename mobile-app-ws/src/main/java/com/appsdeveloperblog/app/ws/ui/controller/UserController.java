@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.appsdeveloperblog.app.ws.ui.model.response.UserRest;
+import com.appsdeveloperblog.app.ws.ui.model.response.UserResponse;
 
 @RestController
 @RequestMapping("users")
@@ -34,9 +34,9 @@ public class UserController {
 	}
 	
 	@GetMapping(path = "/{userId}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<UserRest> getUserById(@PathVariable String userId) {
-		UserRest returnValue = new UserRest(userId, "Matheus", "Mello de Lima", "mellomatheuslima@gmail.com");
-		return new ResponseEntity<UserRest>(returnValue, HttpStatus.OK);
+	public ResponseEntity<UserResponse> getUserById(@PathVariable String userId) {
+		UserResponse returnValue = new UserResponse(userId, "Matheus", "Mello de Lima", "mellomatheuslima@gmail.com");
+		return new ResponseEntity<UserResponse>(returnValue, HttpStatus.OK);
 	}
 	
 	@PutMapping(path = "/{userId}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
