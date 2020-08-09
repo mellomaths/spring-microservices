@@ -24,17 +24,17 @@ public class UserController {
 	
 	@GetMapping(path = "/{userId}")
 	public String getUserById(@PathVariable String userId) {
-		return "GET /users/{" + userId + "}  was called!";
+		return "GET /users/" + userId + "  was called!";
 	}
 	
 	@PutMapping(path = "/{userId}")
 	public String updateUser(@PathVariable String userId) {
-		return "PUT /users/{" + userId + "}  was called!";
+		return "PUT /users/" + userId + "  was called!";
 	}
 	
 	@DeleteMapping(path = "/{userId}")
 	public String deleteUser(@PathVariable String userId) {
-		return "DELETE /users/{" + userId + "}  was called!";
+		return "DELETE /users/" + userId + "  was called!";
 	}
 	
 }
