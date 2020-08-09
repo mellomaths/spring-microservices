@@ -29,7 +29,8 @@ public class UserController {
 		return new ResponseEntity<String>(message, HttpStatus.OK);
 	}
 	
-	@PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
+			consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<String> createUser(@RequestBody UserRequest userData) {
 		String message = "POST /users was called!";
 		return new ResponseEntity<String>(message, HttpStatus.CREATED);
