@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.appsdeveloperblog.app.ws.ui.model.request.UserRequest;
 import com.appsdeveloperblog.app.ws.ui.model.response.UserResponse;
 
 @RestController
@@ -28,7 +30,7 @@ public class UserController {
 	}
 	
 	@PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<String> createUser() {
+	public ResponseEntity<String> createUser(@RequestBody UserRequest userData) {
 		String message = "POST /users was called!";
 		return new ResponseEntity<String>(message, HttpStatus.CREATED);
 	}
