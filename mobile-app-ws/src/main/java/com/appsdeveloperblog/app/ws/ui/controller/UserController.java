@@ -31,9 +31,9 @@ public class UserController {
 	
 	@PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
 			consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<String> createUser(@RequestBody UserRequest userData) {
-		String message = "POST /users was called!";
-		return new ResponseEntity<String>(message, HttpStatus.CREATED);
+	public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest userData) {
+		UserResponse returnValue = new UserResponse("1", "Matheus", "Mello de Lima", "mellomatheuslima@gmail.com");
+		return new ResponseEntity<UserResponse>(returnValue, HttpStatus.CREATED);
 	}
 	
 	@GetMapping(path = "/{userId}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
