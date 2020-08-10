@@ -1,10 +1,28 @@
 package com.appsdeveloperblog.app.ws.ui.model.request;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class UserRequest {
 	
+	@NotNull(message = "Field 'firstName' is mandatory.")
+	@NotBlank(message = "Field 'firstName' is mandatory.")
 	private String firstName;
+	
+	@NotNull(message = "Field 'lastName' is mandatory.")
+	@NotBlank(message = "Field 'lastName' is mandatory.")
 	private String lastName;
+	
+	@NotNull(message = "Field 'email' is mandatory.")
+	@NotBlank(message = "Field 'email' is mandatory.") 
+	@Email(message = "Field 'email' should respect an email format.")
 	private String email;
+	
+	@NotNull(message = "Field 'password' is mandatory.")
+	@NotBlank(message = "Field 'password' is mandatory.")
+	@Size(min=8, message = "Field 'password' should have at least 8 characters.")
 	private String password;
 	
 	public UserRequest(String firstName, String lastName, String email, String password) {
