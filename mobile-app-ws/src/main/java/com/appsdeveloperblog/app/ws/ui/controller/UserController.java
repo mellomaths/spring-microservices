@@ -52,8 +52,11 @@ public class UserController {
 	
 	@GetMapping(path = "/{userId}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<UserResponse> getUserById(@PathVariable String userId) {
-		UserResponse returnValue = new UserResponse(userId, "Matheus", "Mello de Lima", "mellomatheuslima@gmail.com");
-		return new ResponseEntity<UserResponse>(returnValue, HttpStatus.OK);
+		if (users == null || !users.containsKey(userId)) {
+			return new ResponseEntity<UserResponse>(HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<UserResponse>(users.get(userId), HttpStatus.OK);
 	}
 	
 	@PutMapping(path = "/{userId}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
