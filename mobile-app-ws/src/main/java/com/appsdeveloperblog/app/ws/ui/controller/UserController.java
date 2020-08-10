@@ -1,5 +1,7 @@
 package com.appsdeveloperblog.app.ws.ui.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +33,7 @@ public class UserController {
 	
 	@PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
 			consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest userData) {
+	public ResponseEntity<UserResponse> createUser(@Valid @RequestBody UserRequest userData) {
 		UserResponse returnValue = new UserResponse("1", "Matheus", "Mello de Lima", "mellomatheuslima@gmail.com");
 		return new ResponseEntity<UserResponse>(returnValue, HttpStatus.CREATED);
 	}
