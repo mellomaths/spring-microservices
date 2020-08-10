@@ -1,5 +1,9 @@
 package com.appsdeveloperblog.app.ws.ui.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
@@ -22,6 +26,8 @@ import com.appsdeveloperblog.app.ws.ui.model.response.UserResponse;
 @RequestMapping("users")
 public class UserController {
 	
+	Map<String, UserResponse> users;
+	
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<String> getUsers(@RequestParam(value = "page", defaultValue="1") int page, 
 			@RequestParam(value = "limit", defaultValue = "100") int limit,
@@ -34,7 +40,13 @@ public class UserController {
 	@PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
 			consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<UserResponse> createUser(@Valid @RequestBody UserRequest userData) {
-		UserResponse returnValue = new UserResponse("1", "Matheus", "Mello de Lima", "mellomatheuslima@gmail.com");
+		String userId = UUID.randomUUID().toString();
+		UserResponse returnValue = new UserResponse(userId, "Matheus", "Mello de Lima", "mellomatheuslima@gmail.com");
+		if (users == null) {
+			users = new HashMap<>();  
+		}
+		 
+		users.put(userId, returnValue);
 		return new ResponseEntity<UserResponse>(returnValue, HttpStatus.CREATED);
 	}
 	
