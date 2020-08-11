@@ -66,7 +66,7 @@ public class UserController {
 	}
 	
 	@DeleteMapping(path = "/{userId}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<String> deleteUser(@PathVariable String userId) {
+	public ResponseEntity<String> deleteUserById(@PathVariable String userId) {
 		String message = "DELETE /users/" + userId + "  was called!";
 		return new ResponseEntity<String>(message, HttpStatus.NO_CONTENT);
 	}
