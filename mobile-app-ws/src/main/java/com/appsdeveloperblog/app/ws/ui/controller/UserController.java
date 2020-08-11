@@ -62,9 +62,9 @@ public class UserController {
 	
 	@PutMapping(path = "/{userId}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
 			consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<UserResponse> updateUserById(@PathVariable String userId, @Valid @RequestBody UpdateUserRequest updateUserData) {
+	public ResponseEntity<Void> updateUserById(@PathVariable String userId, @Valid @RequestBody UpdateUserRequest updateUserData) {
 		if (users == null || !users.containsKey(userId)) {
-			return new ResponseEntity<UserResponse>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		}
 		
 		UserResponse storedUser = users.get(userId);
@@ -72,13 +72,18 @@ public class UserController {
 		storedUser.setLastName(updateUserData.getLastName());
 		users.put(userId, storedUser);
 		
-		return new ResponseEntity<UserResponse>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 	
-	@DeleteMapping(path = "/{userId}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<String> deleteUserById(@PathVariable String userId) {
-		String message = "DELETE /users/" + userId + "  was called!";
-		return new ResponseEntity<String>(message, HttpStatus.NO_CONTENT);
+	@DeleteMapping(path = "/{userId}")
+	public ResponseEntity<Void> deleteUserById(@PathVariable String userId) {
+		if (users == null || !users.containsKey(userId)) {
+			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+		}
+		
+		users.remove(userId);
+		
+		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 	
 }
