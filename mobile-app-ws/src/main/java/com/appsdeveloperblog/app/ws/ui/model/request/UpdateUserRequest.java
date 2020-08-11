@@ -6,11 +6,11 @@ import javax.validation.constraints.NotNull;
 public class UpdateUserRequest {
 	
 	@NotNull(message = "Field 'firstName' is mandatory.")
-	@NotBlank(message = "Field 'firstName' is mandatory.")
+	@NotBlank(message = "Field 'firstName' cannot be blank.")
 	private String firstName;
 	
 	@NotNull(message = "Field 'lastName' is mandatory.")
-	@NotBlank(message = "Field 'lastName' is mandatory.")
+	@NotBlank(message = "Field 'lastName' cannot be blank.")
 	private String lastName;
 	
 	public UpdateUserRequest(String firstName, String lastName) {
