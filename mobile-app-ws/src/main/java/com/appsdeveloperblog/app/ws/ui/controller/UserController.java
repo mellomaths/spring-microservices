@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.appsdeveloperblog.app.ws.ui.model.request.UpdateUserRequest;
 import com.appsdeveloperblog.app.ws.ui.model.request.UserRequest;
 import com.appsdeveloperblog.app.ws.ui.model.response.UserResponse;
 
@@ -59,10 +60,19 @@ public class UserController {
 		return new ResponseEntity<UserResponse>(users.get(userId), HttpStatus.OK);
 	}
 	
-	@PutMapping(path = "/{userId}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<String> updateUser(@PathVariable String userId) {
-		String message = "PUT /users/" + userId + "  was called!";
-		return new ResponseEntity<String>(message, HttpStatus.NO_CONTENT);
+	@PutMapping(path = "/{userId}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
+			consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<UserResponse> updateUserById(@PathVariable String userId, @Valid @RequestBody UpdateUserRequest updateUserData) {
+		if (users == null || !users.containsKey(userId)) {
+			return new ResponseEntity<UserResponse>(HttpStatus.NOT_FOUND);
+		}
+		
+		UserResponse storedUser = users.get(userId);
+		storedUser.setFirstName(updateUserData.getFirstName());
+		storedUser.setLastName(updateUserData.getLastName());
+		users.put(userId, storedUser);
+		
+		return new ResponseEntity<UserResponse>(HttpStatus.NO_CONTENT);
 	}
 	
 	@DeleteMapping(path = "/{userId}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
