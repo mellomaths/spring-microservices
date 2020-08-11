@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.appsdeveloperblog.app.ws.exception.ResourceNotFoundException;
 import com.appsdeveloperblog.app.ws.ui.model.request.UpdateUserRequest;
 import com.appsdeveloperblog.app.ws.ui.model.request.UserRequest;
 import com.appsdeveloperblog.app.ws.ui.model.response.UserResponse;
@@ -54,7 +55,7 @@ public class UserController {
 	@GetMapping(path = "/{userId}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<UserResponse> getUserById(@PathVariable String userId) {
 		if (users == null || !users.containsKey(userId)) {
-			return new ResponseEntity<UserResponse>(HttpStatus.NOT_FOUND);
+			throw new ResourceNotFoundException("User " + userId + " was not found.");
 		}
 		
 		return new ResponseEntity<UserResponse>(users.get(userId), HttpStatus.OK);
@@ -64,7 +65,7 @@ public class UserController {
 			consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Void> updateUserById(@PathVariable String userId, @Valid @RequestBody UpdateUserRequest updateUserData) {
 		if (users == null || !users.containsKey(userId)) {
-			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+			throw new ResourceNotFoundException("User " + userId + " was not found.");
 		}
 		
 		UserResponse storedUser = users.get(userId);
