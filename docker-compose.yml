@@ -1,0 +1,14 @@
+version: '2'
+services: 
+  application:
+    build: 
+        context: mobile-app-ws 
+    image: mobile-app-ws
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
