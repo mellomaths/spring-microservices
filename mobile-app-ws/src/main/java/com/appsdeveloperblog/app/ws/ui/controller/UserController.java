@@ -1,11 +1,10 @@
 package com.appsdeveloperblog.app.ws.ui.controller;
 
-import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.appsdeveloperblog.app.ws.exception.ResourceNotFoundException;
+import com.appsdeveloperblog.app.ws.service.UserService;
 import com.appsdeveloperblog.app.ws.ui.model.request.UpdateUserRequest;
 import com.appsdeveloperblog.app.ws.ui.model.request.UserRequest;
 import com.appsdeveloperblog.app.ws.ui.model.response.UserResponse;
@@ -27,6 +27,9 @@ import com.appsdeveloperblog.app.ws.ui.model.response.UserResponse;
 @RestController
 @RequestMapping("users")
 public class UserController {
+	
+	@Autowired
+	protected UserService userService;
 	
 	Map<String, UserResponse> users;
 	
@@ -42,14 +45,8 @@ public class UserController {
 	@PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE },
 			consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<UserResponse> createUser(@Valid @RequestBody UserRequest userData) {
-		String userId = UUID.randomUUID().toString();
-		UserResponse returnValue = new UserResponse(userId, "Matheus", "Mello de Lima", "mellomatheuslima@gmail.com");
-		if (users == null) {
-			users = new HashMap<>();  
-		}
-		 
-		users.put(userId, returnValue);
-		return new ResponseEntity<UserResponse>(returnValue, HttpStatus.CREATED);
+		UserResponse userCreated = this.userService.create(userData);
+		return new ResponseEntity<UserResponse>(userCreated, HttpStatus.CREATED);
 	}
 	
 	@GetMapping(path = "/{userId}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
