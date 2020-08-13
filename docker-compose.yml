@@ -1,14 +1,20 @@
 version: '2'
 services: 
-  application:
-    build: 
-        context: mobile-app-ws 
-    image: mobile-app-ws
+  mongodb:
+    image: mongo
     ports:
-      - "8080:8080"
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: system
+      MONGO_INITDB_ROOT_PASSWORD: system
     networks:
-      - app-network
+      - app-network  
+    volumes: 
+      - mongodbdata:/data/db
 
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  mongodbdata: 
