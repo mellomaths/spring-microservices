@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Playlist {
 	
 	@Id
-	private String id;
+	private final String id;
 	private String name;
 	
 	public Playlist(String name) {
@@ -19,10 +19,6 @@ public class Playlist {
 
 	public String getId() {
 		return id;
-	}
-	
-	public void setId(String id) {
-		this.id = id;
 	}
 	
 	public String getName() {
