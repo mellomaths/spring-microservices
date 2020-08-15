@@ -5,6 +5,8 @@ import java.util.UUID;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.apirest.webflux.dto.response.PlaylistResponseDto;
+
 @Document
 public class Playlist {
 	
@@ -29,5 +31,8 @@ public class Playlist {
 		this.name = name;
 	}
 	
+	public PlaylistResponseDto toRepresentationModel() {
+		return new PlaylistResponseDto(id, name);
+	}
 
 }
