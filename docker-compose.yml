@@ -1,0 +1,20 @@
+version: '2'
+services: 
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: system
+      MONGO_INITDB_ROOT_PASSWORD: system
+    networks:
+      - app-network  
+    volumes: 
+      - mongodbdata:/data/db
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongodbdata: 
