@@ -1,9 +1,23 @@
 package com.spring.microservices.photoapp.api.users.application.request;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class CreateUserRequest {
+
+	@NotNull(message="Field 'firstName' cannot be null.")
 	private String firstName;
+	
+	@NotNull(message="Field 'lastName' cannot be null.")
 	private String lastName;
+	
+	@NotNull(message="Field 'email' cannot be null.")
+	@Email
 	private String email;
+	
+	@NotNull(message="Field 'password' cannot be null.")
+	@Size(min=8, max=16, message="Password must be equal or greater than 8 characters and less than 16 characters.")
 	private String password;
 	
 	public String getFirstName() {
