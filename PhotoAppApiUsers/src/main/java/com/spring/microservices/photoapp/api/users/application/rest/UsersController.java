@@ -1,5 +1,7 @@
 package com.spring.microservices.photoapp.api.users.application.rest;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +25,7 @@ public class UsersController {
 	}
 	
 	@PostMapping
-	public String createUser(@RequestBody CreateUserRequest userData) {
+	public String createUser(@Valid @RequestBody CreateUserRequest userData) {
 		return "createUser() method was called!";
 	}
 	
