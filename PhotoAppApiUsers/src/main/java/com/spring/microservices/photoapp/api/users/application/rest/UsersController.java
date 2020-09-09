@@ -11,13 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.microservices.photoapp.api.users.application.request.CreateUserRequest;
+import com.spring.microservices.photoapp.api.users.domain.service.UsersService;
 
 @RestController
 @RequestMapping("users")
-public class UsersController {
+public class UsersController { 
 	
 	@Autowired
 	private Environment env;
+	
+	@Autowired
+	private UsersService userService;
 	
 	@GetMapping("health")
 	public String healthCheck() {
@@ -26,7 +30,8 @@ public class UsersController {
 	
 	@PostMapping
 	public String createUser(@Valid @RequestBody CreateUserRequest userData) {
-		return "createUser() method was called!";
+		String userId = userService.createUser(userData.toDto());
+		return "createUser() method was called! User " + userId + " created!";
 	}
 	
 }
