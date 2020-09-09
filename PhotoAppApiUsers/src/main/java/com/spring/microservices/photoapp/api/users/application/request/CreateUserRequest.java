@@ -4,6 +4,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.spring.microservices.photoapp.api.users.shared.UserDto;
+
 public class CreateUserRequest {
 
 	@NotNull(message="Field 'firstName' cannot be null.")
@@ -19,6 +21,15 @@ public class CreateUserRequest {
 	@NotNull(message="Field 'password' cannot be null.")
 	@Size(min=8, max=16, message="Password must be equal or greater than 8 characters and less than 16 characters.")
 	private String password;
+	
+	public UserDto toDto() {
+		UserDto dto = new UserDto();
+		dto.setFirstName(firstName);
+		dto.setLastName(lastName);
+		dto.setEmail(email);
+		dto.setPassword(password);
+		return dto;
+	}
 	
 	public String getFirstName() {
 		return firstName;
@@ -51,6 +62,5 @@ public class CreateUserRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
 	
 }
