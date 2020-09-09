@@ -4,5 +4,5 @@ import com.spring.microservices.photoapp.api.users.shared.UserDto;
 
 public interface UsersService {
 
-	void createUser(UserDto userData);
+	String createUser(UserDto userData);
 }
