@@ -1,20 +1,22 @@
 package com.spring.microservices.photoapp.api.users.domain;
 
+import com.spring.microservices.photoapp.api.users.domain.valueobjects.Email;
 import com.spring.microservices.photoapp.api.users.domain.valueobjects.Identifier;
 import com.spring.microservices.photoapp.api.users.shared.UserDto;
 
-public class User implements Entity {
+public class User extends Entity {
 
 	private final String firstName;
 	private final String lastName;
-	private final String email;
+	private final Email email;
 	private final String password;
 	private String encryptedPassword;
 	
 	public User(String fistName, String lastName, String email, String password) {
+		super();
 		this.firstName = fistName;
 		this.lastName = lastName;
-		this.email = email;
+		this.email = new Email(email);
 		this.password = password;
 		this.encryptedPassword = null;
 	}
@@ -33,7 +35,7 @@ public class User implements Entity {
 		dto.setId(id.toString());
 		dto.setFirstName(firstName);
 		dto.setLastName(lastName);
-		dto.setEmail(email);
+		dto.setEmail(email.toString());
 		dto.setPassword(password);
 		dto.setEncryptedPassword(encryptedPassword);
 		return dto;
@@ -51,7 +53,7 @@ public class User implements Entity {
 		return lastName;
 	}
 	
-	public String getEmail() {
+	public Email getEmail() {
 		return email;
 	}
 
