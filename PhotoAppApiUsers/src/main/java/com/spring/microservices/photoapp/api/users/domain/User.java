@@ -1,7 +1,6 @@
 package com.spring.microservices.photoapp.api.users.domain;
 
 import com.spring.microservices.photoapp.api.users.domain.valueobjects.Email;
-import com.spring.microservices.photoapp.api.users.domain.valueobjects.Identifier;
 import com.spring.microservices.photoapp.api.users.shared.UserDto;
 
 public class User extends Entity {
@@ -38,11 +37,8 @@ public class User extends Entity {
 		dto.setEmail(email.toString());
 		dto.setPassword(password);
 		dto.setEncryptedPassword(encryptedPassword);
+		dto.setCreatedAt(createdAt.toString());
 		return dto;
-	}
-
-	public Identifier getId() {
-		return id;
 	}
 	
 	public String getFirstName() {
