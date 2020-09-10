@@ -3,6 +3,7 @@ package com.spring.microservices.photoapp.api.users.domain.service;
 import org.springframework.stereotype.Service;
 
 import com.spring.microservices.photoapp.api.users.domain.User;
+import com.spring.microservices.photoapp.api.users.domain.exception.UserNotFoundException;
 import com.spring.microservices.photoapp.api.users.domain.repository.UserRepository;
 import com.spring.microservices.photoapp.api.users.shared.UserDto;
 
@@ -17,10 +18,15 @@ public class UsersServiceImpl implements UsersService {
 
 	@Override
 	public String createUser(UserDto userData) {
-		// TODO Auto-generated method stub
 		User user = User.of(userData);
 		userRepository.save(user.toDto());
 		return user.getId().toString();
+	}
+	
+	@Override
+	public UserDto getUserById(String id) throws UserNotFoundException {
+		UserDto user = userRepository.findById(id);
+		return user;
 	}
 	
 }
