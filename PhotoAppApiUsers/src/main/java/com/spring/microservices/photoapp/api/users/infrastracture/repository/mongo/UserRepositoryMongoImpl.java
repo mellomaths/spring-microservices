@@ -1,9 +1,12 @@
 package com.spring.microservices.photoapp.api.users.infrastracture.repository.mongo;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
+import com.spring.microservices.photoapp.api.users.domain.exception.UserNotFoundException;
 import com.spring.microservices.photoapp.api.users.domain.repository.UserRepository;
 import com.spring.microservices.photoapp.api.users.infrastracture.repository.mongo.document.UserDocument;
 import com.spring.microservices.photoapp.api.users.shared.UserDto;
@@ -21,9 +24,18 @@ public class UserRepositoryMongoImpl implements UserRepository {
 	
 	@Override
 	public void save(UserDto userData) {
-		System.out.println("Saving user " + userData.getId());
 		userRepository.save(UserDocument.of(userData));
+	}
+	
+	@Override
+	public UserDto findById(String id) throws UserNotFoundException {
+		Optional<UserDocument> result = userRepository.findById(id);
+		if (!result.isPresent()) {
+			throw new UserNotFoundException(id);
+		}
 		
+		UserDocument user = result.get();
+		return user.toDto();		
 	}
 
 }
