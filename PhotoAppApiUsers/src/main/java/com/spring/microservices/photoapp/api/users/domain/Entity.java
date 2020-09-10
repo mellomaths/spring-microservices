@@ -5,12 +5,20 @@ import com.spring.microservices.photoapp.api.users.domain.valueobjects.Identifie
 
 public class Entity {
 	
-	Identifier id;
-	Date createdAt;
+	protected Identifier id;
+	protected Date createdAt;
 	
 	public Entity() {
 		this.id = new Identifier();
 		this.createdAt = new Date();
 	}
+	
+	public Identifier getId() {
+		return id;
+	}
 
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+	
 }
