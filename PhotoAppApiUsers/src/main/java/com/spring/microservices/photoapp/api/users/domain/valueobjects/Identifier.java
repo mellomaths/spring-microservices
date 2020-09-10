@@ -7,15 +7,15 @@ public class Identifier implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private final UUID id;
+	private final UUID value;
 	
 	public Identifier() {
-		id = UUID.randomUUID();
+		value = UUID.randomUUID();
 	}
 	
 	@Override
 	public String toString() {
-		return id.toString();
+		return value.toString();
 	}
 
 }
