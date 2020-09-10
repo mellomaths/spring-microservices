@@ -2,8 +2,12 @@ package com.spring.microservices.photoapp.api.users.domain;
 
 import com.spring.microservices.photoapp.api.users.domain.valueobjects.Identifier;
 
-public interface Entity {
+public class Entity {
 	
-	Identifier id = new Identifier();
+	Identifier id;
+	
+	public Entity() {
+		this.id = new Identifier();
+	}
 
 }
