@@ -12,12 +12,13 @@ public class UserDocument extends UserEntity {
 	@Id
 	private String id;
 	
-	public UserDocument(String id, String firstName, String lastName, String email, String encryptedPassword) {
+	public UserDocument(String id, String firstName, String lastName, String email, String encryptedPassword, String createdAt) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.encryptedPassword = encryptedPassword;
+		this.createdAt = createdAt;
 	}
 	
 	public static UserDocument of(UserDto userData) {
@@ -26,7 +27,8 @@ public class UserDocument extends UserEntity {
 				userData.getFirstName(), 
 				userData.getLastName(), 
 				userData.getEmail(),
-				userData.getEncryptedPassword());
+				userData.getEncryptedPassword(),
+				userData.getCreatedAt());
 		return document;
 	}
 	
@@ -37,6 +39,7 @@ public class UserDocument extends UserEntity {
 		dto.setLastName(lastName);
 		dto.setEmail(email);
 		dto.setEncryptedPassword(encryptedPassword);
+		dto.setCreatedAt(createdAt);
 		return dto;
 	}
 

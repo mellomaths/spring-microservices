@@ -7,5 +7,6 @@ public class UserEntity {
 	protected String lastName;
 	protected String email;
 	protected String encryptedPassword;
+	protected String createdAt;
 
 }
