@@ -1,7 +1,7 @@
 package com.spring.microservices.photoapp.api.users.domain.valueobjects;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 
 public class Date implements Serializable {
 
@@ -10,9 +10,8 @@ public class Date implements Serializable {
 	private final String value;
 	
 	public Date() {
-		java.util.Date date = new java.util.Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-		value = formatter.format(date);
+		LocalDateTime datetime = LocalDateTime.now();
+		value = datetime.toString();
 	}
 	
 	@Override
