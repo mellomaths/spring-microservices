@@ -11,7 +11,6 @@ public class UserDto implements Serializable {
 	private String lastName;
 	private String email;
 	private String password;
-	private String encryptedPassword;
 	private String createdAt;
 
 	public String getId() {
@@ -53,15 +52,6 @@ public class UserDto implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public String getEncryptedPassword() {
-		return encryptedPassword;
-	}
-
-	public void setEncryptedPassword(String encryptedPassword) {
-		this.encryptedPassword = encryptedPassword;
-	}
-
 	public String getCreatedAt() {
 		return createdAt;
 	}

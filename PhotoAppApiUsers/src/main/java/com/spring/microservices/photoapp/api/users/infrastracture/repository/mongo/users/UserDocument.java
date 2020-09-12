@@ -13,15 +13,15 @@ public class UserDocument {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String encryptedPassword;
+	private String password;
 	private String createdAt;
 	
-	public UserDocument(String id, String firstName, String lastName, String email, String encryptedPassword, String createdAt) {
+	public UserDocument(String id, String firstName, String lastName, String email, String password, String createdAt) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.encryptedPassword = encryptedPassword;
+		this.password = password;
 		this.createdAt = createdAt;
 	}
 	
@@ -31,7 +31,7 @@ public class UserDocument {
 				userData.getFirstName(), 
 				userData.getLastName(), 
 				userData.getEmail(),
-				userData.getEncryptedPassword(),
+				userData.getPassword(),
 				userData.getCreatedAt());
 		return document;
 	}
@@ -42,7 +42,7 @@ public class UserDocument {
 		dto.setFirstName(firstName);
 		dto.setLastName(lastName);
 		dto.setEmail(email);
-		dto.setEncryptedPassword(encryptedPassword);
+		dto.setPassword(password);
 		dto.setCreatedAt(createdAt);
 		return dto;
 	}
