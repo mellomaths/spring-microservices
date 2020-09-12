@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spring.microservices.photoapp.api.users.application.http.exception.ResourceNotFoundException;
 import com.spring.microservices.photoapp.api.users.domain.users.UserDto;
 import com.spring.microservices.photoapp.api.users.domain.users.UsersService;
 import com.spring.microservices.photoapp.api.users.domain.users.exception.UserNotFoundException;
@@ -36,12 +37,12 @@ public class UsersController {
 	}
 	
 	@GetMapping("{id}")
-	public ResponseEntity<UserResponseBody> getUserById(@PathVariable String id) {
+	public ResponseEntity<UserResponseBody> getUserById(@PathVariable String id) throws ResourceNotFoundException {
 		try {
 			UserDto user = userService.getUserById(id);
 			return ResponseEntity.ok(UserResponseBody.of(user));
 		} catch (UserNotFoundException err) {
-			return (ResponseEntity<UserResponseBody>) ResponseEntity.notFound();
+			throw new ResourceNotFoundException(err.getMessage());
 		}
 	}
 	
