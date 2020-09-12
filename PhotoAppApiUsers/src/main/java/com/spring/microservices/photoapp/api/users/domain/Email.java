@@ -1,4 +1,4 @@
-package com.spring.microservices.photoapp.api.users.domain.valueobjects;
+package com.spring.microservices.photoapp.api.users.domain;
 
 import java.io.Serializable;
 
