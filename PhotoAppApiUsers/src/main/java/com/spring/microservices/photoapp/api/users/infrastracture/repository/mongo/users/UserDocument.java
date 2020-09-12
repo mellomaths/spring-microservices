@@ -1,16 +1,20 @@
-package com.spring.microservices.photoapp.api.users.infrastracture.repository.mongo.document;
+package com.spring.microservices.photoapp.api.users.infrastracture.repository.mongo.users;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.spring.microservices.photoapp.api.users.infrastracture.entity.UserEntity;
 import com.spring.microservices.photoapp.api.users.shared.UserDto;
 
 @Document(collection = "user")
-public class UserDocument extends UserEntity {
+public class UserDocument {
 	
 	@Id
 	private String id;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String encryptedPassword;
+	private String createdAt;
 	
 	public UserDocument(String id, String firstName, String lastName, String email, String encryptedPassword, String createdAt) {
 		this.id = id;
