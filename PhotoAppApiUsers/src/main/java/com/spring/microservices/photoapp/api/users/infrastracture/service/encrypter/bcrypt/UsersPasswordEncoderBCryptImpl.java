@@ -23,4 +23,10 @@ public class UsersPasswordEncoderBCryptImpl implements UsersPasswordEncoder {
 		return bCryptPasswordEncoder.encode(password);
 	}
 
+	@Override
+	public String matches(CharSequence attempt, String password) {
+		bCryptPasswordEncoder.matches(attempt, password);
+		return null;
+	}
+
 }
