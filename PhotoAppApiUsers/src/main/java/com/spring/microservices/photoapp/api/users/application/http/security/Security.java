@@ -1,4 +1,4 @@
-package com.spring.microservices.photoapp.api.users.application.http.configuration;
+package com.spring.microservices.photoapp.api.users.application.http.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
