@@ -7,4 +7,5 @@ public interface UsersService {
 	String createUser(UserDto userData);
 	
 	UserDto getUserById(String id) throws UserNotFoundException;
+
 }
