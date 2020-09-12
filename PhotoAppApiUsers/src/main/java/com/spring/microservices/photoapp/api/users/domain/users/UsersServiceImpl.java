@@ -31,4 +31,10 @@ public class UsersServiceImpl implements UsersService {
 		return user;
 	}
 	
+	@Override
+	public UserDto getUserByEmail(String email) throws UserNotFoundException {
+		UserDto user = userRepository.findByEmail(email);
+		return user;
+	}
+	
 }
