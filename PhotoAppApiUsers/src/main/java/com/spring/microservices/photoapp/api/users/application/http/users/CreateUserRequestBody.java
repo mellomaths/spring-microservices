@@ -1,4 +1,4 @@
-package com.spring.microservices.photoapp.api.users.application.request;
+package com.spring.microservices.photoapp.api.users.application.http.users;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 
 import com.spring.microservices.photoapp.api.users.shared.UserDto;
 
-public class CreateUserRequest {
+public class CreateUserRequestBody {
 
 	@NotNull(message="Field 'firstName' cannot be null.")
 	private String firstName;

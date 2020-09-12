@@ -1,8 +1,8 @@
-package com.spring.microservices.photoapp.api.users.application.response;
+package com.spring.microservices.photoapp.api.users.application.http.users;
 
 import com.spring.microservices.photoapp.api.users.shared.UserDto;
 
-public class UserResponse {
+public class UserResponseBody {
 
 	private String id;
 	private String firstName;
@@ -10,7 +10,7 @@ public class UserResponse {
 	private String email;
 	private String createdAt;
 
-	public UserResponse(String id, String firstName, String lastName, String email, String createdAt) {
+	public UserResponseBody(String id, String firstName, String lastName, String email, String createdAt) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -18,8 +18,8 @@ public class UserResponse {
 		this.createdAt = createdAt;
 	}
 
-	public static UserResponse of(UserDto dto) {
-		return new UserResponse(dto.getId(), dto.getFirstName(), dto.getLastName(), dto.getEmail(), dto.getCreatedAt());
+	public static UserResponseBody of(UserDto dto) {
+		return new UserResponseBody(dto.getId(), dto.getFirstName(), dto.getLastName(), dto.getEmail(), dto.getCreatedAt());
 	}
 
 	public String getId() {
