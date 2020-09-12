@@ -1,4 +1,4 @@
-package com.spring.microservices.photoapp.api.users.domain.exception;
+package com.spring.microservices.photoapp.api.users.domain.users.exception;
 
 public class UserNotFoundException extends Exception {
 	

@@ -1,10 +1,9 @@
-package com.spring.microservices.photoapp.api.users.domain.service;
+package com.spring.microservices.photoapp.api.users.domain.users;
 
 import org.springframework.stereotype.Service;
 
 import com.spring.microservices.photoapp.api.users.domain.User;
-import com.spring.microservices.photoapp.api.users.domain.exception.UserNotFoundException;
-import com.spring.microservices.photoapp.api.users.domain.repository.UserRepository;
+import com.spring.microservices.photoapp.api.users.domain.users.exception.UserNotFoundException;
 import com.spring.microservices.photoapp.api.users.shared.UserDto;
 
 @Service

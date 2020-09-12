@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-import com.spring.microservices.photoapp.api.users.domain.exception.UserNotFoundException;
-import com.spring.microservices.photoapp.api.users.domain.repository.UserRepository;
+import com.spring.microservices.photoapp.api.users.domain.users.UserRepository;
+import com.spring.microservices.photoapp.api.users.domain.users.exception.UserNotFoundException;
 import com.spring.microservices.photoapp.api.users.infrastracture.repository.mongo.document.UserDocument;
 import com.spring.microservices.photoapp.api.users.shared.UserDto;
 

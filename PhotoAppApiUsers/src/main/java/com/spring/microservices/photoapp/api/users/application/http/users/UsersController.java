@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.microservices.photoapp.api.users.domain.exception.UserNotFoundException;
-import com.spring.microservices.photoapp.api.users.domain.service.UsersService;
+import com.spring.microservices.photoapp.api.users.domain.users.UsersService;
+import com.spring.microservices.photoapp.api.users.domain.users.exception.UserNotFoundException;
 import com.spring.microservices.photoapp.api.users.shared.UserDto;
 
 @RestController
