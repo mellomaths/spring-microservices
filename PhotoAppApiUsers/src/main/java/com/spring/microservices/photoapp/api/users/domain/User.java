@@ -1,22 +1,21 @@
 package com.spring.microservices.photoapp.api.users.domain;
 
 import com.spring.microservices.photoapp.api.users.domain.users.UserDto;
+import com.spring.microservices.photoapp.api.users.domain.users.UserPasswordEncoder;
 
 public class User extends Entity {
 
 	private final String firstName;
 	private final String lastName;
 	private final Email email;
-	private final String password;
-	private String encryptedPassword;
+	private final Password password;
 	
 	public User(String fistName, String lastName, String email, String password) {
 		super();
 		this.firstName = fistName;
 		this.lastName = lastName;
 		this.email = new Email(email);
-		this.password = password;
-		this.encryptedPassword = null;
+		this.password = new Password(password);
 	}
 	
 	public static User of(UserDto userData) {
@@ -34,10 +33,13 @@ public class User extends Entity {
 		dto.setFirstName(firstName);
 		dto.setLastName(lastName);
 		dto.setEmail(email.toString());
-		dto.setPassword(password);
-		dto.setEncryptedPassword(encryptedPassword);
+		dto.setPassword(password.getEncrypted());
 		dto.setCreatedAt(createdAt.toString());
 		return dto;
+	}
+	
+	public void encryptPassword(UserPasswordEncoder passwordEncoder) {
+		this.password.encrypt(passwordEncoder);
 	}
 	
 	public String getFirstName() {
@@ -52,12 +54,8 @@ public class User extends Entity {
 		return email;
 	}
 
-	public String getPassword() {
+	public Password getPassword() {
 		return password;
-	}
-
-	public String getEncryptedPassword() {
-		return encryptedPassword;
 	}
 
 }
