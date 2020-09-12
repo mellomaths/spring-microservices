@@ -1,5 +1,6 @@
 package com.spring.microservices.photoapp.api.users.infrastracture.repository.mongo.users;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,16 @@ public class UsersRepositoryMongoImpl implements UsersRepository {
 		
 		UserDocument user = result.get();
 		return user.toDto();		
+	}
+
+	@Override
+	public UserDto findByEmail(String email) throws UserNotFoundException {
+		List<UserDocument> result = userRepository.findByEmail(email);
+		if (result.size() == 0) {
+			throw new UserNotFoundException(email);
+		}
+		
+		return result.get(0).toDto();
 	}
 
 }
