@@ -11,7 +11,7 @@ import com.spring.microservices.photoapp.api.users.domain.User;
 public class CreateUserFactory {
 	
 	@Autowired
-	private UserPasswordEncoder passwordEncoder;
+	private UsersPasswordEncoder passwordEncoder;
 	
 	public User execute(UserDto userData) {
 		User user = User.of(userData);

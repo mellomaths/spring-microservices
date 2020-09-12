@@ -1,7 +1,7 @@
 package com.spring.microservices.photoapp.api.users.domain;
 
 import com.spring.microservices.photoapp.api.users.domain.users.UserDto;
-import com.spring.microservices.photoapp.api.users.domain.users.UserPasswordEncoder;
+import com.spring.microservices.photoapp.api.users.domain.users.UsersPasswordEncoder;
 
 public class User extends Entity {
 
@@ -38,7 +38,7 @@ public class User extends Entity {
 		return dto;
 	}
 	
-	public void encryptPassword(UserPasswordEncoder passwordEncoder) {
+	public void encryptPassword(UsersPasswordEncoder passwordEncoder) {
 		this.password.encrypt(passwordEncoder);
 	}
 	

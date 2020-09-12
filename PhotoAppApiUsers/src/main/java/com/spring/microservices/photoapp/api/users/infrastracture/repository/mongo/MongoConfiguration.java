@@ -2,9 +2,9 @@ package com.spring.microservices.photoapp.api.users.infrastracture.repository.mo
 
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-import com.spring.microservices.photoapp.api.users.infrastracture.repository.mongo.users.SpringDataMongoUserRepository;
+import com.spring.microservices.photoapp.api.users.infrastracture.repository.mongo.users.SpringDataMongoUsersRepository;
 
-@EnableMongoRepositories(basePackageClasses = SpringDataMongoUserRepository.class)
+@EnableMongoRepositories(basePackageClasses = SpringDataMongoUsersRepository.class)
 public class MongoConfiguration {
 
 }

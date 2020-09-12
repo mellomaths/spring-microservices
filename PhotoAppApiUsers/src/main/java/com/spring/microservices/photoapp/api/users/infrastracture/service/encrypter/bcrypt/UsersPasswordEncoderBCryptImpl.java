@@ -5,16 +5,16 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import com.spring.microservices.photoapp.api.users.domain.users.UserPasswordEncoder;
+import com.spring.microservices.photoapp.api.users.domain.users.UsersPasswordEncoder;
 
 @Component
 @Primary
-public class UserPasswordEncoderBCryptImpl implements UserPasswordEncoder {
+public class UsersPasswordEncoderBCryptImpl implements UsersPasswordEncoder {
 	
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Autowired
-	public UserPasswordEncoderBCryptImpl(final BCryptPasswordEncoder bCryptPasswordEncoder) {
+	public UsersPasswordEncoderBCryptImpl(final BCryptPasswordEncoder bCryptPasswordEncoder) {
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
 

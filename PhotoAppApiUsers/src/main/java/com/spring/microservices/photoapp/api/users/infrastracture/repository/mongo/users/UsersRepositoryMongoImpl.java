@@ -12,12 +12,12 @@ import com.spring.microservices.photoapp.api.users.domain.users.exception.UserNo
 
 @Component
 @Primary
-public class UserRepositoryMongoImpl implements UsersRepository {
+public class UsersRepositoryMongoImpl implements UsersRepository {
 
-	private final SpringDataMongoUserRepository userRepository;
+	private final SpringDataMongoUsersRepository userRepository;
 
 	@Autowired
-	public UserRepositoryMongoImpl(final SpringDataMongoUserRepository userRepository) {
+	public UsersRepositoryMongoImpl(final SpringDataMongoUsersRepository userRepository) {
 		this.userRepository = userRepository;
 	}
 	

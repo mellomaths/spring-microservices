@@ -1,6 +1,6 @@
 package com.spring.microservices.photoapp.api.users.domain.users;
 
-public interface UserPasswordEncoder {
+public interface UsersPasswordEncoder {
 	
 	String encode(String password);
 

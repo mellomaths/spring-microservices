@@ -2,7 +2,7 @@ package com.spring.microservices.photoapp.api.users.domain;
 
 import java.io.Serializable;
 
-import com.spring.microservices.photoapp.api.users.domain.users.UserPasswordEncoder;
+import com.spring.microservices.photoapp.api.users.domain.users.UsersPasswordEncoder;
 
 public class Password implements Serializable {
 
@@ -16,7 +16,7 @@ public class Password implements Serializable {
 		this.encrypted = null;
 	}
 	
-	public void encrypt(UserPasswordEncoder passwordEncoder) {
+	public void encrypt(UsersPasswordEncoder passwordEncoder) {
 		encrypted = passwordEncoder.encode(original);
 	}
 
