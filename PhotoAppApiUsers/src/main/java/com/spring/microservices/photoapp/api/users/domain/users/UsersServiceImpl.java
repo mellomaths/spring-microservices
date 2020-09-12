@@ -1,5 +1,6 @@
 package com.spring.microservices.photoapp.api.users.domain.users;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.microservices.photoapp.api.users.domain.User;
@@ -9,14 +10,17 @@ import com.spring.microservices.photoapp.api.users.domain.users.exception.UserNo
 public class UsersServiceImpl implements UsersService {
 	
 	private final UsersRepository userRepository;
-	
-	public UsersServiceImpl(final UsersRepository userRepository) {
+	private final CreateUserFactory createUserFactory;
+
+	@Autowired
+	public UsersServiceImpl(final UsersRepository userRepository, final CreateUserFactory createUserFactory) {
 		this.userRepository = userRepository;
+		this.createUserFactory = createUserFactory;
 	}
 
 	@Override
 	public String createUser(UserDto userData) {
-		User user = User.of(userData);
+		User user = createUserFactory.execute(userData);
 		userRepository.save(user.toDto());
 		return user.getId().toString();
 	}
