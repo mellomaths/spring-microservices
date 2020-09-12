@@ -1,7 +1,5 @@
 package com.spring.microservices.photoapp.api.users.application.http.users;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
@@ -12,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spring.microservices.photoapp.api.users.domain.users.UserDto;
 import com.spring.microservices.photoapp.api.users.domain.users.UsersService;
 import com.spring.microservices.photoapp.api.users.domain.users.exception.UserNotFoundException;
-import com.spring.microservices.photoapp.api.users.shared.UserDto;
 
 @RestController
 @RequestMapping("users")
@@ -32,7 +30,7 @@ public class UsersController {
 	}
 	
 	@PostMapping
-	public String createUser(@Valid @RequestBody CreateUserRequestBody userData) {
+	public String createUser(@RequestBody CreateUserRequestBody userData) {
 		String userId = userService.createUser(userData.toDto());
 		return "createUser() method was called! User " + userId + " created!";
 	}

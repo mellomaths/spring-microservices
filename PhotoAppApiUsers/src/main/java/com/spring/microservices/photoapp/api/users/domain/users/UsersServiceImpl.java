@@ -4,14 +4,13 @@ import org.springframework.stereotype.Service;
 
 import com.spring.microservices.photoapp.api.users.domain.User;
 import com.spring.microservices.photoapp.api.users.domain.users.exception.UserNotFoundException;
-import com.spring.microservices.photoapp.api.users.shared.UserDto;
 
 @Service
 public class UsersServiceImpl implements UsersService {
 	
-	private final UserRepository userRepository;
+	private final UsersRepository userRepository;
 	
-	public UsersServiceImpl(final UserRepository userRepository) {
+	public UsersServiceImpl(final UsersRepository userRepository) {
 		this.userRepository = userRepository;
 	}
 

@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-import com.spring.microservices.photoapp.api.users.domain.users.UserRepository;
+import com.spring.microservices.photoapp.api.users.domain.users.UserDto;
+import com.spring.microservices.photoapp.api.users.domain.users.UsersRepository;
 import com.spring.microservices.photoapp.api.users.domain.users.exception.UserNotFoundException;
-import com.spring.microservices.photoapp.api.users.shared.UserDto;
 
 @Component
 @Primary
-public class UserRepositoryMongoImpl implements UserRepository {
+public class UserRepositoryMongoImpl implements UsersRepository {
 
 	private final SpringDataMongoUserRepository userRepository;
 

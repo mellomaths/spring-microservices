@@ -1,4 +1,4 @@
-package com.spring.microservices.photoapp.api.users.shared;
+package com.spring.microservices.photoapp.api.users.domain.users;
 
 import java.io.Serializable;
 

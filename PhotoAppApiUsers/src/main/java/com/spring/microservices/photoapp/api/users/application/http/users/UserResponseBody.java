@@ -1,6 +1,6 @@
 package com.spring.microservices.photoapp.api.users.application.http.users;
 
-import com.spring.microservices.photoapp.api.users.shared.UserDto;
+import com.spring.microservices.photoapp.api.users.domain.users.UserDto;
 
 public class UserResponseBody {
 

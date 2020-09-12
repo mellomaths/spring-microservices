@@ -1,6 +1,6 @@
 package com.spring.microservices.photoapp.api.users.domain;
 
-import com.spring.microservices.photoapp.api.users.shared.UserDto;
+import com.spring.microservices.photoapp.api.users.domain.users.UserDto;
 
 public class User extends Entity {
 

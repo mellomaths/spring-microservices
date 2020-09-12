@@ -3,7 +3,7 @@ package com.spring.microservices.photoapp.api.users.infrastracture.repository.mo
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.spring.microservices.photoapp.api.users.shared.UserDto;
+import com.spring.microservices.photoapp.api.users.domain.users.UserDto;
 
 @Document(collection = "user")
 public class UserDocument {
