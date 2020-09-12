@@ -2,6 +2,8 @@ package com.spring.microservices.photoapp.api.users.application.http.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,9 +33,11 @@ public class UsersController {
 	}
 	
 	@PostMapping
-	public String createUser(@RequestBody CreateUserRequestBody userData) {
+	public ResponseEntity<Void> createUser(@RequestBody CreateUserRequestBody userData) {
 		String userId = userService.createUser(userData.toDto());
-		return "createUser() method was called! User " + userId + " created!";
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Entity", userId);
+		return new ResponseEntity<>(headers, HttpStatus.CREATED);
 	}
 	
 	@GetMapping("{id}")
