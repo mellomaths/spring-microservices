@@ -1,10 +1,6 @@
 package com.spring.microservices.photoapp.api.users.domain.users;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.spring.microservices.photoapp.api.users.domain.User;
@@ -15,13 +11,11 @@ public class UsersServiceImpl implements UsersService {
 	
 	private final UsersRepository userRepository;
 	private final CreateUserFactory createUserFactory;
-	private final UsersTokenGenerator usersTokenGenerator;
 
 	@Autowired
-	public UsersServiceImpl(final UsersRepository userRepository, final CreateUserFactory createUserFactory, final UsersTokenGenerator usersTokenGenerator) {
+	public UsersServiceImpl(final UsersRepository userRepository, final CreateUserFactory createUserFactory) {
 		this.userRepository = userRepository;
 		this.createUserFactory = createUserFactory;
-		this.usersTokenGenerator = usersTokenGenerator;
 	}
 
 	@Override
@@ -41,22 +35,6 @@ public class UsersServiceImpl implements UsersService {
 	public UserDto getUserByEmail(String email) throws UserNotFoundException {
 		UserDto user = userRepository.findByEmail(email);
 		return user;
-	}
-
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		try {
-			UserDto user = userRepository.findByEmail(username);
-			return new org.springframework.security.core.userdetails.User(
-					user.getEmail(), user.getPassword(), true, true, true, true, new ArrayList<>());
-		} catch (UserNotFoundException err) {
-			throw new UsernameNotFoundException(err.getMessage());
-		}
-	}
-
-	@Override
-	public String generateAuthenticationToken(String email, String password) {
-		return usersTokenGenerator.generate(email, password);
 	}
 	
 }

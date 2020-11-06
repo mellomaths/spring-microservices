@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.spring.microservices.photoapp.api.users.domain.users.UsersAuthenticationService;
 import com.spring.microservices.photoapp.api.users.domain.users.UsersService;
 
 @Configuration
@@ -22,24 +23,28 @@ public class Security extends WebSecurityConfigurerAdapter {
 	private UsersService userService;
 	
 	@Autowired
+	private UsersAuthenticationService usersAuthenticationService;
+	
+	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
-		http.authorizeRequests().antMatchers("/**").hasIpAddress(environment.getProperty("apigateway.ip.address"))
+		http.authorizeRequests()
+			.antMatchers("/**")
+			.hasIpAddress(environment.getProperty("apigateway.ip.address"))
 			.and().addFilter(getAuthenticationFilter());
 	}
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userService).passwordEncoder(passwordEncoder);
+		auth.userDetailsService(usersAuthenticationService).passwordEncoder(passwordEncoder);
 	}
 	
 	private AuthenticationFilter getAuthenticationFilter() throws Exception {
-		AuthenticationFilter authenticationFilter = new AuthenticationFilter();
-		authenticationFilter.setAuthenticationManager(authenticationManager());
+		AuthenticationFilter authenticationFilter = new AuthenticationFilter(userService, usersAuthenticationService, authenticationManager());
 		return authenticationFilter;
 	}
  
