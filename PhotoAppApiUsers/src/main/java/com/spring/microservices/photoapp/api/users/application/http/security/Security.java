@@ -36,6 +36,7 @@ public class Security extends WebSecurityConfigurerAdapter {
 			.antMatchers("/**")
 			.hasIpAddress(environment.getProperty("apigateway.ip.address"))
 			.and().addFilter(getAuthenticationFilter());
+		
 	}
 	
 	@Override
@@ -45,6 +46,7 @@ public class Security extends WebSecurityConfigurerAdapter {
 	
 	private AuthenticationFilter getAuthenticationFilter() throws Exception {
 		AuthenticationFilter authenticationFilter = new AuthenticationFilter(userService, usersAuthenticationService, authenticationManager());
+		authenticationFilter.setFilterProcessesUrl(environment.getProperty("login.url.path"));
 		return authenticationFilter;
 	}
  
