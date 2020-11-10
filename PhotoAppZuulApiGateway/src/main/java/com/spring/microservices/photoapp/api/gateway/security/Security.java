@@ -27,7 +27,8 @@ public class Security extends WebSecurityConfigurerAdapter {
 		
 		http.authorizeRequests()
 			.antMatchers(HttpMethod.POST, env.getRequiredProperty("api.registration.url.path")).permitAll()
-			.antMatchers(HttpMethod.POST, env.getRequiredProperty("api.login.url.path")).permitAll();
+			.antMatchers(HttpMethod.POST, env.getRequiredProperty("api.login.url.path")).permitAll()
+			.anyRequest().authenticated();
 		
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		// Make the API stateless
