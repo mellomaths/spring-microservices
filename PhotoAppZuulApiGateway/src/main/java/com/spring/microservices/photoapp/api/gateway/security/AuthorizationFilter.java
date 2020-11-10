@@ -28,7 +28,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
 		String authorizationHeader = request.getHeader(env.getRequiredProperty("authorization.token.header.name"));
-		if (authorizationHeader == null || !authorizationHeader.startsWith(env.getRequiredProperty("authorization.token.heade.prefix"))) {
+		if (authorizationHeader == null || !authorizationHeader.startsWith(env.getRequiredProperty("authorization.token.header.prefix"))) {
 			chain.doFilter(request, response);
 			return;
 		}
@@ -44,7 +44,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
 			return null;
 		}
 		
-		String token = authorizationHeader.replace(env.getRequiredProperty("authorization.token.heade.prefix"), "");
+		String token = authorizationHeader.replace(env.getRequiredProperty("authorization.token.header.prefix"), "");
 		String userId = Jwts.parser()
 				.setSigningKey(env.getRequiredProperty("token.secret")) // needs to be the same secret used on users microservice
 				.parseClaimsJws(token)
