@@ -12,6 +12,26 @@ services:
     volumes: 
       - mongodbdata:/data/db
 
+  # spring_example:
+  #   container_name: sccserver
+  #   ports:
+  #     - 8080:8080
+  #   volumes:
+  #     - /data/config-dir:/data
+  #   environment:
+  #     - EUREKA_HOST=$DOCKERHOST
+  #     - scc_search_paths={application}, {application}/extended-attributes, {application}/feature-flags, {application}/properties, {application}/error-codes,{application}/seed-data,{application}/globalization,{application}/json-validator-schema,{application}/seedData
+  #     - VIRTUAL_HOST=$DOCKERHOST
+  #     - MESSAGING_HOST=$DOCKERHOST
+  #     - SCC_GIT_URI=https://bitbucket.com/XXXXXXX.git 
+  #     - "JAVA_OPTS=-Xmx512m"
+  #     - SCC_GIT_SKIPSSLVALIDATION=true
+  #     - SPRING_CLOUD_CONFIG_SERVER_GIT_USERNAME=
+  #     - SPRING_CLOUD_CONFIG_SERVER_GIT_PASSWORD=
+  #     - SPRING_CLOUD_CONFIG_SERVER_GIT_DEFAULT-LABEL=
+  #   extra_hosts:
+  #     - "dockerhost:$DOCKERHOST"
+
 networks:
   app-network:
     driver: bridge
