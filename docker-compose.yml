@@ -12,6 +12,15 @@ services:
     volumes: 
       - mongodbdata:/data/db
 
+  rabbit:
+    image: rabbitmq:3.7-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - app-network
+
+
   # spring_example:
   #   container_name: sccserver
   #   ports:
