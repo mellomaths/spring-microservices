@@ -27,6 +27,7 @@ public class Security extends WebSecurityConfigurerAdapter {
 		
 		http.authorizeRequests()
 			.antMatchers(HttpMethod.GET, env.getRequiredProperty("api.zuul.actuator.url.path")).permitAll()
+			.antMatchers(HttpMethod.GET, env.getRequiredProperty("api.users.actuator.url.path")).permitAll()
 			.antMatchers(HttpMethod.POST, env.getRequiredProperty("api.registration.url.path")).permitAll()
 			.antMatchers(HttpMethod.POST, env.getRequiredProperty("api.login.url.path")).permitAll()
 			.anyRequest().authenticated()
