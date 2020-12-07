@@ -3,20 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.appsdeveloperblog.photoapp.api.albums.ui.model;
+package com.spring.microservices.photoapp.api.albums.data;
 
-/**
- *
- * @author skargopolov
- */
-public class AlbumResponseModel {
+public class AlbumEntity {
+    private long id;
     private String albumId;
     private String userId; 
     private String name;
-    private String description;
+    private String description; 
 
     /**
      * @return the id
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the albumId
      */
     public String getAlbumId() {
         return albumId;
@@ -70,5 +81,6 @@ public class AlbumResponseModel {
     public void setDescription(String description) {
         this.description = description;
     }
+    
     
 }

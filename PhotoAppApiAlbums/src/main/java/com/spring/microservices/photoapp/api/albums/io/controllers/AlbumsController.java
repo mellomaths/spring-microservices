@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.appsdeveloperblog.photoapp.api.albums.io.controllers;
+package com.spring.microservices.photoapp.api.albums.io.controllers;
 
-import com.appsdeveloperblog.photoapp.api.albums.data.AlbumEntity;
-import com.appsdeveloperblog.photoapp.api.albums.service.AlbumsService;
-import com.appsdeveloperblog.photoapp.api.albums.ui.model.AlbumResponseModel;
+import com.spring.microservices.photoapp.api.albums.data.AlbumEntity;
+import com.spring.microservices.photoapp.api.albums.service.AlbumsService;
+import com.spring.microservices.photoapp.api.albums.ui.model.AlbumResponseModel;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.modelmapper.ModelMapper;

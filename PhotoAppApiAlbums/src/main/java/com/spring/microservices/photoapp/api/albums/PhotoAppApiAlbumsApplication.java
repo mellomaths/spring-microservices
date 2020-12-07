@@ -1,4 +1,4 @@
-package com.appsdeveloperblog.photoapp.api.albums;
+package com.spring.microservices.photoapp.api.albums;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

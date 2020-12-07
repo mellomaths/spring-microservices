@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.appsdeveloperblog.photoapp.api.albums.service;
+package com.spring.microservices.photoapp.api.albums.service;
 
-import com.appsdeveloperblog.photoapp.api.albums.data.AlbumEntity;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
+
+import com.spring.microservices.photoapp.api.albums.data.AlbumEntity;
 
 @Service
 public class AlbumsServiceImpl implements AlbumsService {
