@@ -1,5 +1,9 @@
 package com.spring.microservices.photoapp.api.users.application.http.users;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.spring.microservices.photoapp.api.users.application.http.albums.AlbumResponseBody;
 import com.spring.microservices.photoapp.api.users.domain.users.UserDto;
 
 public class UserResponseBody {
@@ -8,6 +12,7 @@ public class UserResponseBody {
 	private String firstName;
 	private String lastName;
 	private String email;
+	private List<AlbumResponseBody> albums;
 	private String createdAt;
 
 	public UserResponseBody(String id, String firstName, String lastName, String email, String createdAt) {
@@ -15,6 +20,16 @@ public class UserResponseBody {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.albums = new ArrayList<>();
+		this.createdAt = createdAt;
+	}
+	
+	public UserResponseBody(String id, String firstName, String lastName, String email, List<AlbumResponseBody> albums, String createdAt) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.albums = albums;
 		this.createdAt = createdAt;
 	}
 
@@ -57,9 +72,17 @@ public class UserResponseBody {
 	public String getCreatedAt() {
 		return createdAt;
 	}
+	
+	public List<AlbumResponseBody> getAlbums() {
+		return albums;
+	}
+
+	public void setAlbums(List<AlbumResponseBody> albums) {
+		this.albums = albums;
+	}
 
 	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
-	}
+	}	
 
 }
