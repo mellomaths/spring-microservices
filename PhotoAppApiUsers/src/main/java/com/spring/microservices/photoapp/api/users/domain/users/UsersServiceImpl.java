@@ -1,9 +1,12 @@
 package com.spring.microservices.photoapp.api.users.domain.users;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.microservices.photoapp.api.users.domain.User;
+import com.spring.microservices.photoapp.api.users.domain.albums.AlbumDto;
 import com.spring.microservices.photoapp.api.users.domain.users.exception.UserNotFoundException;
 
 @Service
@@ -35,6 +38,12 @@ public class UsersServiceImpl implements UsersService {
 	public UserDto getUserByEmail(String email) throws UserNotFoundException {
 		UserDto user = userRepository.findByEmail(email);
 		return user;
+	}
+
+	@Override
+	public List<AlbumDto> getAlbumsByUserId(String userId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
