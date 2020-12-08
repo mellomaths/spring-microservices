@@ -47,11 +47,11 @@ public class UsersController {
 	}
 	
 	@GetMapping("{id}")
-	public ResponseEntity<UserResponseBody> getUserById(@PathVariable String id, @RequestParam("expand") String expand) throws ResourceNotFoundException {
+	public ResponseEntity<UserResponseBody> getUserById(@PathVariable String id, @RequestParam(name="expand", required=false) String expand) throws ResourceNotFoundException {
 		try {
 			UserDto user = userService.getUserById(id);
 			UserResponseBody responseBody = UserResponseBody.of(user);
-			if (expand.toLowerCase().contains("albums")) {
+			if (expand != null && expand.toLowerCase().contains("albums")) {
 				List<AlbumDto> albums = userService.getAlbumsByUserId(id);
 				List<AlbumResponseBody> albumsResponseBody = new ArrayList<>();
 				albums.forEach(album -> albumsResponseBody.add(AlbumResponseBody.of(album)));
