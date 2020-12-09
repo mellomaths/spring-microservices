@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.microservices.photoapp.api.users.domain.User;
 import com.spring.microservices.photoapp.api.users.domain.albums.AlbumDto;
-import com.spring.microservices.photoapp.api.users.domain.albums.AlbumsClient;
+import com.spring.microservices.photoapp.api.users.domain.albums.AlbumsServiceClient;
 import com.spring.microservices.photoapp.api.users.domain.users.exception.UserNotFoundException;
 
 @Service
@@ -15,10 +15,10 @@ public class UsersServiceImpl implements UsersService {
 	
 	private final UsersRepository userRepository;
 	private final CreateUserFactory createUserFactory;
-	private final AlbumsClient albumsService;
+	private final AlbumsServiceClient albumsService;
 
 	@Autowired
-	public UsersServiceImpl(final UsersRepository userRepository, final CreateUserFactory createUserFactory, final AlbumsClient albumsService) {
+	public UsersServiceImpl(final UsersRepository userRepository, final CreateUserFactory createUserFactory, final AlbumsServiceClient albumsService) {
 		this.userRepository = userRepository;
 		this.createUserFactory = createUserFactory;
 		this.albumsService = albumsService;
