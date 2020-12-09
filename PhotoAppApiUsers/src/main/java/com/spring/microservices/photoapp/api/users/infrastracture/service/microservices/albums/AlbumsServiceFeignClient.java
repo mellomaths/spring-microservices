@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.spring.microservices.photoapp.api.users.domain.albums.AlbumDto;
 import com.spring.microservices.photoapp.api.users.domain.albums.AlbumsServiceClient;
 
-@FeignClient(name="albums-ms", fallback = AlbumsServiceClientFeignFallback.class)
+@FeignClient(name="albums-ms", fallbackFactory=AlbumsServiceClientFeignFallbackFactory.class)
 public interface AlbumsServiceFeignClient extends AlbumsServiceClient {
 
 	@Override
