@@ -11,7 +11,6 @@ import com.spring.microservices.photoapp.api.users.domain.albums.AlbumDto;
 public class AlbumsServiceClientFeignFallback implements AlbumsServiceFeignClient {
 
 	public List<AlbumDto> getAlbumsByUserId(String userId) {
-		// TODO Auto-generated method stub
 		return new ArrayList<>();
 	}
 
