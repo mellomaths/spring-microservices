@@ -9,6 +9,10 @@ public class AlbumsServiceResponseBody {
 	private String description;
 	private String createdAt;
 	
+	public AlbumsServiceResponseBody() {
+		
+	}
+	
 	public AlbumsServiceResponseBody(String id, String userId, String name, String description, String createdAt) {
 		this.id = id;
 		this.userId = userId;
