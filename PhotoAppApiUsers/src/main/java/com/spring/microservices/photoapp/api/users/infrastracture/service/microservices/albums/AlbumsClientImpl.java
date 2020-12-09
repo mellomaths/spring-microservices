@@ -13,11 +13,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.spring.microservices.photoapp.api.users.domain.albums.AlbumDto;
-import com.spring.microservices.photoapp.api.users.domain.albums.AlbumsService;
+import com.spring.microservices.photoapp.api.users.domain.albums.AlbumsClient;
 
 @Component
 @Primary
-public class AlbumsServiceImpl implements AlbumsService {
+public class AlbumsClientImpl implements AlbumsClient {
 	
 	@Autowired
 	private RestTemplate restTemplate;
