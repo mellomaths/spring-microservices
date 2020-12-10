@@ -20,6 +20,13 @@ services:
     networks:
       - app-network
 
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - app-network
+
 
   # spring_example:
   #   container_name: sccserver
