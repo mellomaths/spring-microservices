@@ -41,7 +41,7 @@ services:
         target: /usr/share/logstash/pipeline
         read_only: true
       - ../PhotoAppApiAlbums/albums-ms.log:/usr/share/PhotoAppApiAlbums/albums-ms.log
-      - ../PhotoAppApiUsers/user-ms.log:/usr/share/PhotoAppApiUsers/user-ms.log
+      - ../PhotoAppApiUsers/users-ms.log:/usr/share/PhotoAppApiUsers/users-ms.log
     ports:
       - "5044:5044"
       - "5000:5000/tcp"
