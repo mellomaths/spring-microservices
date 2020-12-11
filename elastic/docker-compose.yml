@@ -40,11 +40,14 @@ services:
         source: ./logstash/pipeline
         target: /usr/share/logstash/pipeline
         read_only: true
+      - ../PhotoAppApiAlbums/albums-ms.log:/usr/share/PhotoAppApiAlbums/albums-ms.log
+      - ../PhotoAppApiUsers/user-ms.log:/usr/share/PhotoAppApiUsers/user-ms.log
     ports:
       - "5044:5044"
       - "5000:5000/tcp"
       - "5000:5000/udp"
       - "9600:9600"
+      - "5080:5080"
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
