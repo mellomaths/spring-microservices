@@ -41,6 +41,21 @@ services:
       RABBIT_PASSWORD: "guest"
       RABBIT_MANAGEMENT_PORT: "15672"
 
+  eureka:
+    build:
+      context: PhotoAppDiscoveryService/
+    depends_on: 
+      - config-server
+    networks:
+      - app-network
+    environment:
+      SERVER_PORT: "8761"
+      RABBIT_HOST: "rabbit"
+      RABBIT_PORT: "5672"
+      RABBIT_USER: "guest"
+      RABBIT_PASSWORD: "guest"
+      RABBIT_MANAGEMENT_PORT: "15672"
+
   # spring_example:
   #   container_name: sccserver
   #   ports:
