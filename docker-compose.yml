@@ -27,6 +27,19 @@ services:
     networks:
       - app-network
 
+  config-server:
+    build:
+      context: PhotoAppApiConfigServer/
+    depends_on: 
+      - rabbit
+    networks:
+      - app-network
+    environment:
+      RABBIT_HOST: "rabbit"
+      RABBIT_PORT: "5672"
+      RABBIT_USER: "guest"
+      RABBIT_PASSWORD: "guest"
+      RABBIT_MANAGEMENT_PORT: "15672"
 
   # spring_example:
   #   container_name: sccserver
