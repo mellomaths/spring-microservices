@@ -88,6 +88,7 @@ services:
       context: PhotoAppApiAlbums/
     depends_on: 
       - eureka
+      - zuul
     networks:
       - app-network
     environment:
@@ -106,6 +107,7 @@ services:
       context: PhotoAppApiUsers/
     depends_on: 
       - eureka
+      - zuul
       - mongodb
     networks:
       - app-network
