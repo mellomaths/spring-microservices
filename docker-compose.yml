@@ -38,6 +38,7 @@ services:
       - "8012:8012"
     environment:
       SERVER_PORT: "8012"
+      ZUUL_HOST: "zuul"
       RABBIT_HOST: "rabbit"
       RABBIT_PORT: "5672"
       RABBIT_USER: "guest"
