@@ -83,6 +83,24 @@ services:
       RABBIT_PASSWORD: "guest"
       RABBIT_MANAGEMENT_PORT: "15672"
 
+  albums-ms:
+    build:
+      context: PhotoAppApiAlbums/
+    depends_on: 
+      - eureka
+    networks:
+      - app-network
+    environment:
+      EUREKA_HOST: "eureka"
+      EUREKA_PORT: "8010"
+      CONFIG_SERVER_HOST: "config-server"
+      CONFIG_SERVER_PORT: "8012"
+      RABBIT_HOST: "rabbit"
+      RABBIT_PORT: "5672"
+      RABBIT_USER: "guest"
+      RABBIT_PASSWORD: "guest"
+      RABBIT_MANAGEMENT_PORT: "15672"
+
 
   # spring_example:
   #   container_name: sccserver
